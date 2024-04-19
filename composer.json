@@ -1,0 +1,19 @@
+{
+    "name": "ocolin/env",
+    "description": "Very simple tool to load env variables from file",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Ocolin\\Env\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Colin Miller",
+            "email": "ocolin@cruzio.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
