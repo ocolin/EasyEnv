@@ -9,12 +9,12 @@ This was not really written for public use so it may lack special case options. 
 ## Static Usage
     
     EasyEnv::loadEnv(
-        file_path: __DIR__ . '/.env';
+        path: __DIR__ . '/.env';
         silent: true,
         append: true
     );
 
-### file_path
+### path
 
 The path to your .env file containing your variables
 
@@ -29,7 +29,7 @@ Do not load environment variables if they already exist.
 ## Dynamic Usage
 
     $easyenv = new EasyEnv(
-        file_path: __DIR__ . '/.env';
+        path: __DIR__ . '/.env';
         silent: true,
         append: true
     );
