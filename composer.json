@@ -1,5 +1,5 @@
 {
-    "name": "ocolin/env",
+    "name": "ocolin/easyenv",
     "description": "Very simple tool to load env variables from file",
     "type": "library",
     "license": "MIT",
