@@ -17,7 +17,7 @@ use Exception;
  * @example Env::loadEnv( path: __DIR__ . '/.env' );
  */
 
-class Env {
+class EasyEnv {
 
     /**
      * @var string $path The file path of your environment file.
