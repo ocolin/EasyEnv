@@ -89,20 +89,26 @@ class EasyEnv {
     /**
      * Static function to load class and environment variables
      *
-     * @param string $path Path to environment file
+     * @param string|string[] $path Path to environment file
      * @param bool $silent Ignore errors and continue on
      * @param bool $append Don't add env params that are already set
      * @throws Exception
      */
 
     public static function loadEnv(
-        string $path,
+        string|array $path,
           bool $silent = true,
           bool $append = false
     ) : void
     {
-        $o = new self( path: $path, silent: $silent, append: $append );
-        $o->load();
+        $array = [];
+        if( is_string( $path ) ) {  $array[] = $path; }
+        else { $array = $path; }
+
+        foreach( $array as $sub_path ) {
+            $o = new self(path: $sub_path, silent: $silent, append: $append);
+            $o->load();
+        }
     }
 
 
