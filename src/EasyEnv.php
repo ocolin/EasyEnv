@@ -7,8 +7,7 @@ namespace Ocolin\Env;
 use Exception;
 
 /**
- * @author      Colin Miller <snoopy@teaboyaudio.com>
- * @copyright   2024 Teaboyaudio
+ * @author      Colin Miller <ocolin@cruzio.com>
  * @license     MIT
  * @package     ocolin\env
  * @version     1.0
@@ -261,6 +260,7 @@ class EasyEnv {
 
     private static function is_An_Int( string $input ) : bool
     {
+        if( strlen( $input ) === 0 ) { return false; }
         if ( $input[0] == '-' ) {
             return ctype_digit( substr( $input, offset: 1 ));
         }
