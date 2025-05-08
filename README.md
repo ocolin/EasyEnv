@@ -1,37 +1,68 @@
 # About
 
-This is a super basic environment variable loader. It's meant for very basic cases where loading environmont variables from a file are needed.
+This is a simple library for loading environment variables from a file. You provide the path to the environment files, and it will load them into memory.
 
-It also does not load any content into $_SERVER like many do.
+# Arguments
 
-This was not really written for public use so it may lack special case options. However feel free to make any suggestions. If they don't add bloat (which can be handled by the many more robust libraries out there ) and doesn't hinder the private use cases they can be implemented.
+## $files
 
-## Static Usage
-    
-    EasyEnv::loadEnv(
-        path: __DIR__ . '/.env';
-        silent: true,
-        append: true
-    );
+### REQUIRED
 
-### path
+This can either be a string for an individual file, or it can be an array of paths to multiple environment files if you want to keep the variables in separate files. If you use an array, the elements must be strings.
 
-The path to your .env file containing your variables
+## $append
 
-### silent
+- Default: false
+- Type: bool
 
-Fail silently instead of reporting errors if there is a problem with the contents of the environments file
+When set to true, any existing environment variable already set and with the same name as one being loaded, will not be overwritten. This way if you have multiple variables with the same name, they will not be overridden. If you load multiple environment files, the first instance will be used and any identical variable keys will not be updated.
 
-### append
+If set to false and multiple files with identical variable names are loaded, the last one to load will be used. 
 
-Do not load environment variables if they already exist.
+## $silent
 
-## Dynamic Usage
+- Default: false
+- Type: bool
 
-    $easyenv = new EasyEnv(
-        path: __DIR__ . '/.env';
-        silent: true,
-        append: true
-    );
-    
-    $easyenv->load();
+If set to true, any errors will fail silently and the variables will not be loaded.
+
+If set to false, any problems encountered will throw an error and stop.
+
+## $system
+
+- Default: true
+- Type: bool
+
+If set to true, variables will be loaded into system environment as well as PHP environment. In case one does not want them in both spaces.
+
+# Usage
+
+### Single File Basic
+
+```php
+new \Ocolin\EasyEnv\LoadEnv(
+    files: '/dir1/.env',
+);
+```
+
+### Multiple Files Basic
+
+```php
+new \Ocolin\EasyEnv\LoadEnv(
+    files: [ '/dir1/.env', '/dir2/.env' ],
+);
+```
+
+### Advanced
+
+```php
+new \Ocolin\EasyEnv\LoadEnv(
+     files: [ '/dir1/.env', '/dir2/.env' ],
+    append: true,
+    silent: true,
+    system: false
+);
+```
+
+
+
