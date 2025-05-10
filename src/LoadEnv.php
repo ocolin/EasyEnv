@@ -98,6 +98,7 @@ readonly class LoadEnv
             // IGNORE COMMENTS
             if( str_starts_with( haystack: $row, needle: '#' )) { continue; }
             if( str_starts_with( haystack: $row, needle: '//' )) { continue; }
+            if( empty( $row )) { continue; }
 
             list( $param, $value ) = self::parse_Row( row: $row );
             if( $param === '' ) {
