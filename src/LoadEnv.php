@@ -63,9 +63,9 @@ readonly class LoadEnv
     private function load( string $filename ) : void
     {
         try {
-            $file = file_get_contents( filename: $filename );
+            $file = @file_get_contents( filename: $filename );
         }
-        catch( Exception $e) {
+        catch( Exception $e ) {
             if( $this->silent === true ) {  return; }
             throw new EasyEnvFileHandleError( message: "Unable to load file '{$filename}'" );
         }
