@@ -91,7 +91,7 @@ readonly class LoadEnv
 
     private function parse( string $raw ) : void
     {
-        $rows = explode( separator: PHP_EOL, string: trim( $raw ));
+        $rows = explode( separator: PHP_EOL, string: trim( string: $raw ));
 
         foreach( $rows as $key => $row )
         {
@@ -109,13 +109,13 @@ readonly class LoadEnv
             }
 
             if( $this->append ) {
-                if( !empty( $_ENV[$param] )) {
+                if( !empty( $_ENV[$param] )) { // @phpstan-ignore offsetAccess.invalidOffset
                     continue;
                 }
             }
 
             // Load into PHP environment
-            $_ENV[$param] = $value;
+            $_ENV[$param] = $value; // @phpstan-ignore offsetAccess.invalidOffset
 
             // Load into System Env for sharing with other programs
             $param = '' . $param;
