@@ -9,12 +9,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="03cbb738-a089-4e84-bbe2-5077f9c5b2b8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/phpstan.neon" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Env.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/EasyEnv.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/EasyEnv.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LoadEnv.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/LoadEnv.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,7 +141,7 @@
       <workItem from="1757382554990" duration="814000" />
       <workItem from="1758746449211" duration="82000" />
       <workItem from="1761015399120" duration="17000" />
-      <workItem from="1762740882551" duration="3355000" />
+      <workItem from="1762740882551" duration="4445000" />
     </task>
     <servers />
   </component>
