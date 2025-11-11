@@ -1,7 +1,6 @@
 {
     "name": "ocolin/easyenv",
     "description": "Very simple tool to load env variables from file",
-    "version": "2.6",
     "type": "library",
     "license": "MIT",
     "require-dev": {
