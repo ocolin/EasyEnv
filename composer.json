@@ -3,18 +3,22 @@
     "description": "Very simple tool to load env variables from file",
     "type": "library",
     "license": "MIT",
+    "keywords": ["env", "environment", "dotenv", "config"],
     "require-dev": {
-        "php": ">=8.2",
-        "phpunit/phpunit": "^12.1",
+        "phpunit/phpunit": "^13.0",
         "phpstan/phpstan": "^2.1",
-        "phpcompatibility/php-compatibility": "^9.3"
+        "mikey179/vfsstream": "^1.6"
     },
     "prefer-stable" : true,
     "autoload": {
         "psr-4": {
-            "Ocolin\\EasyEnv\\": "src/",
-            "Ocolin\\EasyEnv\\Tests\\": "tests"
+            "Ocolin\\EasyEnv\\": "src/"
         }
+    },
+    "autoload-dev": {
+      "psr-4": {
+        "Ocolin\\EasyEnv\\Tests\\": "tests/"
+      }
     },
     "authors": [
         {
@@ -24,10 +28,10 @@
     ],
     "minimum-stability": "stable",
     "require": {
-      "ext-ctype": "*"
+      "php": ">=8.2"
     },
     "scripts": {
-        "post-install-cmd": "\"vendor/bin/phpcs\" --config-set installed_paths vendor/phpcompatibility/php-compatibility",
-        "post-update-cmd" : "\"vendor/bin/phpcs\" --config-set installed_paths vendor/phpcompatibility/php-compatibility"
+        "test": "vendor/bin/phpunit --no-coverage --display-deprecations --display-notices",
+        "test-coverage": "XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-html coverage"
     }
 }

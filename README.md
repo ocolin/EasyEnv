@@ -1,68 +1,90 @@
-# About
+# EasyEnv
 
-This is a simple library for loading environment variables from a file. You provide the path to the environment files, and it will load them into memory.
+## What is it?
 
-# Arguments
+EasyEnv is a simple tool for loading environment variables into your PHP project. It is designed for minimal hassle, but with optional parameters for expanded control.
 
-## $files
+## Why it exists
 
-### REQUIRED
+There are plenty of tools out there for loading environment variables that are wonderful. I wanted to add one that was just as simple to use if not easier, but also with the ability to prevent the data from being inserted into specific global or environmental spaces. 
 
-This can either be a string for an individual file, or it can be an array of paths to multiple environment files if you want to keep the variables in separate files. If you use an array, the elements must be strings.
+Often times the data can be sensitive and existing in some environments may be a security issue for some users. It allows loading into `$_ENV` while not `$_SERVER` or system environment unless so desired. 
 
-## $append
+## Requirements
 
-- Default: false
-- Type: bool
+This plugin was designed for PHP 8.2 or above.
 
-When set to true, any existing environment variable already set and with the same name as one being loaded, will not be overwritten. This way if you have multiple variables with the same name, they will not be overridden. If you load multiple environment files, the first instance will be used and any identical variable keys will not be updated.
+## Installation
 
-If set to false and multiple files with identical variable names are loaded, the last one to load will be used. 
-
-## $silent
-
-- Default: false
-- Type: bool
-
-If set to true, any errors will fail silently and the variables will not be loaded.
-
-If set to false, any problems encountered will throw an error and stop.
-
-## $system
-
-- Default: true
-- Type: bool
-
-If set to true, variables will be loaded into system environment as well as PHP environment. In case one does not want them in both spaces.
-
-# Usage
-
-### Single File Basic
-
-```php
-new \Ocolin\EasyEnv\LoadEnv(
-    files: '/dir1/.env',
-);
+```
+composer require Ocolin\EasyEnv
 ```
 
-### Multiple Files Basic
+## Basic Usage
+
+By default, the only thing you need is the path of your env file or an array of file paths if there are multiple env files to load.
+
+### Single file
 
 ```php
-new \Ocolin\EasyEnv\LoadEnv(
-    files: [ '/dir1/.env', '/dir2/.env' ],
-);
+
+use Ocolin\EasyEnv\Env;
+
+Env::load( '/path/to/.env' );
+
 ```
 
-### Advanced
+### Multiple files
+
+Files are loaded in order, with later files taking priority over earlier ones on conflicting keys.
 
 ```php
-new \Ocolin\EasyEnv\LoadEnv(
-     files: [ '/dir1/.env', '/dir2/.env' ],
+use Ocolin\EasyEnv\Env;
+
+Env::load( files: [
+    '/path/to/.env.local',
+    '/path/for/.env',
+    '/path/directory/' // Will look for '.env' file
+]);
+```
+
+## Optional Reference
+
+Here are some of the optional arguments that can be used for finer control:
+
+|Argument| Type          | Description                         |Default|
+|--------|---------------|-------------------------------------|-------|
+|files| string\|array | Path to file or array of files      |N/a|
+|append| boolean       | Does not overwrite existing variables | false|
+|silent| boolean       | Does not throw errors loading files | false|
+|system| boolean       | Loads into system environment| true|
+|server| boolean       |Loads into $_SERVER global| false|
+
+## Advanced Usage
+
+### Options
+
+```php
+use Ocolin\EasyEnv\Env;
+Env::load(
+    files: '/path/.env',
     append: true,
     silent: true,
-    system: false
-);
+    system: false,
+    server: true
+)
+```
+### Parse
+
+You can also parse a file into an array of values, which can be handy if you want to load them into something other than an environment. 
+
+```php
+use Ocolin\EasyEnv\Env;
+
+$array = Env::parse( file: '/path/file' );
 ```
 
 
+## Contributing/License
 
+MIT — free to use, modify, and distribute. See [LICENSE](LICENSE) for details.

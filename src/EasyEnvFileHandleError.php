@@ -2,7 +2,7 @@
 
 declare( strict_types = 1 );
 
-namespace Ocolin\EasyEnv\Errors;
+namespace Ocolin\EasyEnv;
 
 use Exception;
 
