@@ -20,6 +20,28 @@ This plugin was designed for PHP 8.2 or above.
 composer require Ocolin\EasyEnv
 ```
 
+
+## Environment variables and the prefix
+
+What makes this tool useful is the prefix parameter. Rather than specifying each variable to create a database handler, you provide a prefix name. The prefix is the beginning of the environment variable names used for your database connection. 
+
+### Example:
+
+Prefix of "MYDB"
+
+This will load the following environment variables for your database handler:
+
+
+
+
+
+
+
+
+
+
+
+
 ## Basic Usage
 
 By default, the only thing you need is the path of your env file or an array of file paths if there are multiple env files to load.
